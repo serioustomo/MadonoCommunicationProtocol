@@ -12,15 +12,33 @@
 
 ### 日記について(About diary)
 日記とは一般に市井のヒトが記す日々の記録である。近年、情報技術の発展に伴い、ブログやSNSなどの媒体上には膨大な量の日記が記録されている。また、企業が出版する著名人のエッセイや、個人が自費出版する同人誌・ZINEなど、規模の大小を問わず、市場には多くの日記が流通している。日記は一般に文字や数字で書かれており、書き手が特定の日をどのように過ごしたのか、何を考えたのか、などの情報が記載されている。読み手は日記をもとに、書き手の行動や心情を読み解ける。日記は記録者が自身の経験やアイデアを記録するのみならず、他人へ何らかの情報を伝達し、その情報から新たな知見を得る道具としても活用できる(Klimova, 2015)。他人への情報伝達を目的とした日記の形式として交換日記が挙げられる。交換日記とは、「読んで字のごとく、日記を複数人の間で交換して記述していくというものである」(山守伸也, 2014)。ここで、あるヒト*A*が日記に書いた情報を、他のヒト*B*が読み解く状況を考える。*A*は、自身の経験やアイデア・考えたことなどを文字や数字で記す。*B*は、書かれた文字や数字を読む。*B*は、*A*と必ずしも時間・空間を共有しない。また、同じ経験をしたとしても想起する考えや記憶に残る事柄は異なる可能性がある。ここで、交換日記の情報伝達を分析するために、*A*と*B*の情報伝達をモデル化することを考える。
-情報交換について著名なモデルとして、Shannonのコミュニケーションモデルを下記に示す(Shannon, 1948)。
+情報交換について著名なモデルとして、Shannon-Weaverのコミュニケーションモデルを下記に示す(Shannon, 1948)。
 
 ![image](https://github.com/user-attachments/assets/c6728d10-5c42-4410-9d4b-be274275b6f8)
-"A mathematical theory of communication." Fig. 1 より引用
+Fig.1 Shannon-Weaverのコミュニケーションモデル、"A mathematical theory of communication. Fig. 1" より引用
 
 INFORMATION SOURCEが伝達したい情報(MESSAGE)を、TRANSMITTERが電文などの形式(SIGNAL)に変換・送信し、RECEIVERが電文を受信してMESSAGEをDESTINATIONに渡す。
-ここで、TRANSMITTERからRECEIVER間にNOISE SOURCEの影響があり、
-
-
+ここで、TRANSMITTERからRECEIVER間にはNOISE SOURCEの影響があり、電文が変化する可能性がある。電文が変化すると、INFORMATION SOURCEが伝達したい情報と、DESTINATIONが受け取る情報が異なってしまう。
+今回、交換日記の情報交換モデルをShannonのコミュニケーションモデルを拡張して下記のように定義した。
+```mermaid
+block-beta
+columns 9
+  InformationSource space:1 Encoder space:1  Diary space:1 Decoder space:1 Destination
+  space:9
+  space:2
+  EncodingAbility
+  space:3
+  DecodingAbility
+  space:2
+  InformationSource -- "Message" --> Encoder
+  Encoder --> Diary
+  Diary --> Decoder
+  Decoder -- "Message" --> Destination
+  EncodingAbility -- "Constraints" --> Encoder
+  DecodingAbility -- "Constraints" --> Decoder
+```
+Fig.2 交換日記の情報交換モデル
+InformationSourceは*A*であり、*A*が伝達したい情報(Message)は*A*のもつ表現力(語彙・文字・知識・比喩表現などの手段=Encoder)の制約のもと日記(Diary)に記録される。*B*はDiaryからMessageを受信するが、このとき*B*のもつ読解力(語彙・文字・知識・比喩表現を*A*の置かれた状況や*A*の人格に沿って理解する手段=Decoder)の制約を受ける。日記を記録する際に主に用いられている文字や数字は、日付などの数値や出来事など事実の記録に優れており、実際に民俗学などの領域で研究対象となっている(川村清志 et al., 2019)。しかし、私は
 
 ## 目的(Objectives)
 本プロトコルの目的は、個人の記録や記憶の他者への伝達である。ヒトは古来、文字の誕生以前より、天体の動きや家畜の数量など、自ら知覚できる情報を何らかの媒体に記録してきた。情報は他者と共有され、祭祀や収穫の時期・課税の多寡を決定するなど、社会の効率的な運営に役立っていたと推察される。（ソース）文字の誕生以降、情報の蓄積と拡散は加速度的に進んだ。（ソース）要因として、情報解釈の一義性等が挙げられる。（ソース）
@@ -67,6 +85,7 @@ l = \left\{ [p_i, p_{i+1}] \;\middle|\; i = 0, 1, 2, \dots, n - 1 \right\}
 ## 参考文献(References)
 Klimova, B. (2015). Diary writing as a tool for students’ self-reflection and teacher’s feedback in the course of academic writing. Procedia-Social and Behavioral Sciences, 197, 549–553.
 Shannon, C. E. (1948). A mathematical theory of communication. The Bell System Technical Journal, 27(3), 379–423.
+川村清志, カワムラキヨシ, 小池淳一, & コイケジュンイチ. (2019). [論文] 民俗学における日記研究の展開とその可能性. 国立歴史民俗博物館研究報告, 214, 195–217.
 山守伸也. (2014). 現代日本における< 日記メディア> と< 日記行為> の文化社会学的考察: 自己・関係・社会の 「可視化」 装置としての日記. https://kansai-u.repo.nii.ac.jp/record/193/files/KU-0010-20140331-14.pdf
 
 ## ライセンス(License)
