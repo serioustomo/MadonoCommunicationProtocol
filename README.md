@@ -28,7 +28,7 @@ columns 9
   space:2
   EncodingAbility
   space:1
-  NoiseSource
+  ExternalEnvironment
   space:1
   DecodingAbility
   space:2
@@ -38,17 +38,16 @@ columns 9
   Decoder -- "Message" --> Destination
   EncodingAbility -- "Constraints" --> Encoder
   DecodingAbility -- "Constraints" --> Decoder
-  NoiseSource -- "Noise" --> EncodingAbility
-  NoiseSource -- "Noise" --> DecodingAbility
+  ExternalEnvironment -- "Influences" --> EncodingAbility
+  ExternalEnvironment -- "Influences" --> DecodingAbility
 ```
   
 Fig.2 交換日記の情報交換モデル  
-InformationSourceは*A*であり、*A*が伝達したい情報(Message)は*A*のもつ表現力(語彙量・知識量・比喩などの表現能力=EncodingAbility)の制約のもと、文字や音声などの何らかの記録手段(Encoder)によって日記(Diary)に記録される。*B*はDiaryを視覚・聴覚などの手段(Decoder)でDiaryを読み解きMessageを受信するが、このとき*B*のもつ読解力(語彙量・知識量・比喩などの表現を*A*の置かれた状況や*A*の人格に沿って理解する手段=DecodingAbility)の制約を受ける。*A*の持つ表現力日記を記録する際に主に用いられている文字や数字は、日付などの数値や出来事など事実の記録に優れており、実際に民俗学などの領域で研究対象となっている(川村清志 et al., 2019)。しかし、私は
+*A*(InformationSource)が伝達したい情報(Message)は、*A*の持つ表現力(語彙量、知識量、比喩などの表現能力＝EncodingAbility)の制約を受けつつ、文字や音声などの記録手段(Encoder)を通じて日記(Diary)として記録される。*B* (Destination)は、Diaryを視覚や聴覚といった手段(Decoder)によって読み解き、Message を受け取るが、その際 *B* の読解力(*A*の状況や人格を踏まえた表現の理解能力＝DecodingAbility)に依存する。EncodingAbilityとDecodingAbilityは、表現規制、価値観の変化、人間関係といった社会的・文化的要因(ExternalEnvironment)によっても影響を受ける。日記に記録される情報の多くは文字や数字によって構成されるが、これらは日付や出来事といった客観的な事実の記録に適しており、民俗学などの研究対象として採用されてもいる(川村清志 et al., 2019)。実際、文字はもともと数量管理や税の記録などの目的で発明された数字にルーツを持つ(ハラリ, 2016)。しかしながら、文字は「記録の正確性」に優れている一方で、書き手の主観的経験や感覚、あるいは複雑なニュアンスといった、より個人的な内容を伝達するには限界がある。こうした情報の伝達には、より視覚的かつ身体的な手段が有効であると考えた。その一例が、インカ帝国で使用されていた「キープ（quipu）」である。キープは、複数の紐の結び目によって数字を表現する視覚的・触覚的な記録媒体であり、情報伝達の手段として機能していた(Ascher & Ascher, 1975)。しかしスペインによる征服の結果、インカ帝国は滅び、キープを読み解く技術や知識も失われた（ハラリ, 2016）。  
+本プロトコルは、キープの構造と理念に着想を得て設計されたものである。文字による情報伝達の限界を補い、より多様な感覚に訴える視覚的プロトコルとして、キープの再構成を試みる。
 
 ## 目的(Objectives)
-本プロトコルの目的は、個人の記録や記憶の他者への伝達である。ヒトは古来、文字の誕生以前より、天体の動きや家畜の数量など、自ら知覚できる情報を何らかの媒体に記録してきた。情報は他者と共有され、祭祀や収穫の時期・課税の多寡を決定するなど、社会の効率的な運営に役立っていたと推察される。（ソース）文字の誕生以降、情報の蓄積と拡散は加速度的に進んだ。（ソース）要因として、情報解釈の一義性等が挙げられる。（ソース）
-しかし（情報解釈が一義的になったゆえの問題の指摘）
-本プロトコルは上記課題を鑑み、ヒトとヒトのコミュニケーションについて、情報解釈の多義性を確保した記録・記憶情報の伝達を行う方法を提供するものである。
+本プロトコルの目的は、個人の記録や記憶の他者への伝達を行う方法を提供するものである。
 
 ## 仕様(Specification)
 本プロトコルは、ヒトの生活する時間を表す軸*t*と、ヒトの生活する地点を表す軸*d*と、前記2軸によって作られる*m*次元空間上に自己の存在した時空間を記録した点集合*S*、ある時空感情の点*p*における記録者の行動や感情を記録する点集合*T*、前記点集合をすべて通るヒトの生活する時空間上の移動を表す多角線*l*によって構成される。プロトコルに沿って自身の記録をつけるヒトを記録者と呼称する。それぞれの要素の詳細を以下に記述する。
@@ -88,9 +87,11 @@ l = \left\{ [p_i, p_{i+1}] \;\middle|\; i = 0, 1, 2, \dots, n - 1 \right\}
 また、複数の箇所である黄色いカラー紐が、他のある黄色いカラー紐に絡んでいる。これは、記録者が、ある日と前後の日との連続性を感じていることを示唆している。
 
 ## 参考文献(References)
+Ascher, M., & Ascher, R. (1975). The Quipu as a Visible Language. Visible Language, 9(4), Article 4. https://journals.uc.edu/index.php/vl/article/view/5194  
 Klimova, B. (2015). Diary writing as a tool for students’ self-reflection and teacher’s feedback in the course of academic writing. Procedia-Social and Behavioral Sciences, 197, 549–553.  
 Shannon, C. E. (1948). A mathematical theory of communication. The Bell System Technical Journal, 27(3), 379–423.  
 川村清志, カワムラキヨシ, 小池淳一, & コイケジュンイチ. (2019). [論文] 民俗学における日記研究の展開とその可能性. 国立歴史民俗博物館研究報告, 214, 195–217.  
+ユヴァル・ノヴァ・ハラリ. (2016). サピエンス全史　上　文明の構造と人類の幸福. 河出文庫.  
 山守伸也. (2014). 現代日本における< 日記メディア> と< 日記行為> の文化社会学的考察: 自己・関係・社会の 「可視化」 装置としての日記. https://kansai-u.repo.nii.ac.jp/record/193/files/KU-0010-20140331-14.pdf  
 
 ## ライセンス(License)
